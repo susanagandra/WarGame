@@ -8,5 +8,37 @@ h1{
     width: 240px;
     height: 336px;
     border-radius: 7%;
-    
+    margin: 5px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.cards:hover{
+    background-color: blueviolet;
+}
+
+.heart{ 
+    color:red;
+    font-size: xx-large;
+}
+
+.heart:after{ 
+    content:"&hearts;";
+    color:black;
+    font-size: xx-large;
+}
+
+.diamond{ 
+    color:black;
+    font-size: xx-large;
+}
+
+.club{ 
+    color:black;
+    font-size: xx-large;
+}
+
+.spade{ 
+    color:red;
+    font-size: xx-large;
 }
