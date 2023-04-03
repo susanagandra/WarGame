@@ -3,3 +3,10 @@ h1{
     text-align: center;
     text-transform: uppercase;
 }
+.cards{
+    border:1px solid black;
+    width: 240px;
+    height: 336px;
+    border-radius: 7%;
+    
+}
