@@ -1,24 +1,6 @@
-
 @font-face {
     font-family: "Righteous";
     src: url('font/Righteous-Regular.ttf') format('truetype');
-}
-
-.header{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      ".";
-    grid-area: header;
-    color:white;
-    text-align: center;
-    text-transform: uppercase;
-    padding:10px;
-    font-size: 32px;
-    font-family: "Righteous", Arial, Helvetica, sans-serif;
 }
 
 body{
@@ -27,68 +9,37 @@ body{
     padding:0;
 }
 
-.card_deck { 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.2fr 1fr 1.5fr 1fr 0.5fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "header header"
-      "deck_player1 deck_player1"
-      "war war"
-      "deck_player2 deck_player2"
-      "utils utils";
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
   }
+
+  .header{
+    width: 100%;
+    color:white;
+    text-align: center;
+    text-transform: uppercase;
+    padding:10px;
+    font-size: 32px;
+    font-family: "Righteous", Arial, Helvetica, sans-serif;
+}
   
-  .deck_player1 {  display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      ".";
-    grid-area: deck_player1;
+  .deck_player1, .war, .deck_player2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15px;
   }
-  
-  .war {  display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      ". .";
-    grid-area: war;
-  }
-  
-  .deck_player2 {  display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      ".";
-    grid-area: deck_player2;
-  }
-  
-  .utils {  display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      ".";
-    grid-area: utils;
-  }
-  
+
 .container {
     display: flex;
     flex-wrap: wrap;
 }
 
 .card {
-    width: 200px;
-    height: 300px;
+    width: 130px;
+    height: 180px;
     border-radius: 7%;
     margin: 5px;
     padding: 10px;
@@ -101,27 +52,20 @@ body{
     position: relative;
 }
 
-.card::after {
-    content: "";
-    position: absolute;
-    top:10px;
+/*.card:hover{
+    cursor: pointer;
+    transform: scale(0.95);
     background-color: #f3bacb;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23b9001e' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}*/
 
-
-    width: 200px;
-    height: 270px;
+.card-back {
+    position: relative;
+    width: 130px;
+    height: 180px;
     border-radius: 7%;
     margin: 5px;
     padding: 5px;
-}
-
-.back {
-    width: 200px;
-    border-radius: 7%;
-    margin: 5px;
-    padding: 10px;
-
     background-color: #f3bacb;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23b9001e' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 
@@ -130,14 +74,36 @@ body{
     box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
 }
 
-.ten, .nine, .eight, .seven, .six, .five, .four, .three, .two, .a{ 
+.card-back:hover{
+    cursor: pointer;
+    transform: scale(0.95);
+    background-color: #e797af;
+}
+
+.card-back::after {
+    content: "";
+    position: absolute;
+    top:5px;
+    background-color: #f3bacb;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23b9001e' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    -webkit-box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
+
+    width: 130px;
+    height: 180px;
+    border-radius: 7%;
+    padding: 5px;
+    border: 2px solid rgb(234, 148, 176);
+}
+
+.ten, .nine, .eight, .seven, .six, .five, .four, .three, .two, .ace{ 
     display: grid; 
     grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr; 
     grid-template-rows: 1fr; 
-    gap: 5px 5px;
+    gap: 2px 2px;
     height: 100%;
-    font-size: 52px;
-
+    font-size: 36px;
 }
 
 .queen, .jack, .king {
@@ -146,15 +112,6 @@ body{
     grid-template-rows: 1fr; 
     gap: 5px 5px;
     height: 100%;
-    /*font-size: 52px;*/
-
-}
-
-.card:hover{
-    cursor: pointer;
-    transform: scale(0.95);
-    background-color: #f3bacb;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23b9001e' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 .corner {
@@ -163,19 +120,14 @@ body{
     grid-template-rows: 0.15fr 1.75fr; 
     gap: 0px 0px;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .suit {
     display: grid; 
     grid-template-columns: 1fr; 
-
-    /*grid-template-rows: 1fr 1fr 1fr 1fr; */
-
     gap: 0px 0px;
-
     text-align: center;
-    
 }
 
 .center {
