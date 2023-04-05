@@ -4,11 +4,20 @@
     src: url('font/Righteous-Regular.ttf') format('truetype');
 }
 
-h1{
-    color:green;
+.header{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ".";
+    grid-area: header;
+    color:white;
     text-align: center;
     text-transform: uppercase;
-
+    padding:10px;
+    font-size: 32px;
     font-family: "Righteous", Arial, Helvetica, sans-serif;
 }
 
@@ -19,9 +28,6 @@ body{
 }
 
 .card_deck { 
-    display: flex;
-    flex-wrap: wrap;
-
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 0.2fr 1fr 1.5fr 1fr 0.5fr;
@@ -33,23 +39,6 @@ body{
       "war war"
       "deck_player2 deck_player2"
       "utils utils";
-  }
-  
-  .header {  
-    color:rgb(52, 21, 113);
-    text-align: center;
-    text-transform: uppercase;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 30px;
-    
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      ".";
-    grid-area: header;
   }
   
   .deck_player1 {  display: grid;
@@ -92,8 +81,6 @@ body{
     grid-area: utils;
   }
   
-
-
 .container {
     display: flex;
     flex-wrap: wrap;
