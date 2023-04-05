@@ -25,6 +25,7 @@ h1{
     grid-template-rows: 1fr; 
     gap: 5px 5px;
     height: 100%;
+    font-size: 52px;
 }
 
 .card:hover{
@@ -46,16 +47,16 @@ h1{
 .suit {
     display: grid; 
     grid-template-columns: 1fr; 
-    grid-template-rows: 1fr 1fr; 
+    /*grid-template-rows: 1fr 1fr 1fr 1fr; */
     gap: 0px 0px;
 
     text-align: center;
+    
 }
 
 .center {
     align-self: center;
     text-align: center;
-    font-size: 52px;
 }
 
 .rotate{
