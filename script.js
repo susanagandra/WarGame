@@ -1,15 +1,27 @@
-function createCard (card, value, suit){
+function createCard (card, suit){
     const cardSymbol = document.getElementById(card);
     const cardSymbolLength = cardSymbol.getElementsByClassName("symbol").length;
-    const cardNumberLength = cardSymbol.getElementsByClassName("number").length;
 
     for(i = 0; i < cardSymbolLength; i++){
         cardSymbol.getElementsByClassName("symbol")[i].innerHTML = suit;
     }
+}
+createCard("ace","&diamond;")
 
-    for(i = 0; i < cardNumberLength; i++){
-        cardSymbol.getElementsByClassName("number")[i].innerHTML = value;
-    }
+
+function changeCardColor(symbol) {
+    
+    const card = document.getElementById(symbol);
+
+    card.addClass("red");
+
+  
+    //cardSymbol.getElementById("symbol").html("&"+symbol+";") === "hearts" || cardSymbol.getElementById("symbol").html("&"+symbol+";") === "diamond" ) {
+        //cardSymbol.addClass("red");
+        
+  //}
+  //$("body").append(cardSymbol);
 }
 
-createCard("ace", "10", "&hearts;");
+changeCardColor("ace");
+
