@@ -24,24 +24,39 @@ body{
     font-family: "Righteous", Arial, Helvetica, sans-serif;
 }
   
-  .deck_player1, .war, .deck_player2 {
+  .deck_player {
     display: flex;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     justify-content: center;
+
     width: 100%;
     margin-bottom: 15px;
   }
 
-.container {
+  .deck2 {
+    flex-direction: row-reverse;
+  }
+
+.war {
     display: flex;
     flex-wrap: wrap;
-}
+    justify-content: center;
+    
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .background, .match{
+    display: flex;
+    position: absolute;
+    z-index: 10;
+  }
 
 .card {
     width: 130px;
     height: 180px;
     border-radius: 7%;
-    margin: 5px;
+    margin: 0 5px;
     padding: 10px;
     background-color: white;
 
@@ -52,35 +67,34 @@ body{
     position: relative;
 }
 
-/*.card:hover{
-    cursor: pointer;
-    transform: scale(0.95);
-    background-color: #f3bacb;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23b9001e' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}*/
-
-.card-back {
-    position: relative;
-    width: 130px;
-    height: 180px;
-    border-radius: 7%;
-    margin: 5px;
+.back {
+    margin: 0 5px;
     padding: 5px;
     background-color: #f3bacb;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23b9001e' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 
-    -webkit-box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
+    animation-timing-function: ease-in;
+    /*animation: flyin 0.6s;*/
 }
 
-.card-back:hover{
+.back:hover{
     cursor: pointer;
-    transform: scale(0.95);
+    transform: scale(1.05);
     background-color: #e797af;
 }
 
-.card-back::after {
+.inner {
+    display: flex;
+    position: relative;
+    background-color:rgb(255 255 255 / 15%);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+    width: 130px;
+    height: 180px;
+    box-shadow: none;
+}
+
+/*.card-back::after {
     content: "";
     position: absolute;
     top:5px;
@@ -95,6 +109,55 @@ body{
     border-radius: 7%;
     padding: 5px;
     border: 2px solid rgb(234, 148, 176);
+}*/
+.board1 {
+    display: flex;
+    justify-content: flex-end;
+    width: 45%;
+}
+
+.board2 {
+    display: flex;
+    justify-content: flex-start;
+    width: 55%;
+}
+
+.board4 {
+    display: flex;
+    justify-content: flex-end;
+    width: 55%;
+}
+
+.board3 {
+    display: flex;
+    align-items: flex-end;
+    width: 45%;
+}
+
+.player-board {
+    position: absolute;
+    width: 80px;
+    border-radius: 7px;
+    background-color: rgba(255,255,255,0.35);
+
+    margin: 0 15px;
+    padding: 10px;
+    font-size: 15px;
+    font-family: "Righteous", Arial, Helvetica, sans-serif;
+}
+
+.box {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgba(255,255,255,0.35);
+    padding: 3px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.box:last-child {
+    margin-bottom: 0;
 }
 
 .ten, .nine, .eight, .seven, .six, .five, .four, .three, .two, .ace{ 
@@ -145,6 +208,11 @@ body{
     font-size: 10px;
 }
 
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .heart{ 
     color:red;
     font-size: xx-large;
@@ -169,4 +237,15 @@ body{
 .spade{ 
     color:red;
     font-size: xx-large;
+}
+
+@keyframes flyin {
+    0%   { 
+        transform: translateX(300%);
+        opacity: 0;		
+        }
+        100% { 
+        transform: translateX(0%);
+        opacity: 1;
+        }
 }

@@ -12,356 +12,92 @@
 
     <div class="card-deck">
         <div class="header">War Game</div>
-        <div class="deck_player1">
-            <div id="player1" class="card-back"></div>
+        <div class="deck_player">
+            <div class="board1">
+                <div class="player-board">
+                    <div class="name">Player 1</div>
+                    <div class="score">Score</div>
+                    <div class="box">0</div>
+                    <div class="cards-left">Cards left</div>
+                    <div class="box">0</div>
+                </div>
+            </div>
+            <div class="board2">
+                <div id="player1" class="card back"></div>
+                <div class="background">
+                    <div class="card back inner"></div>
+                </div>
+            </div>
         </div>
         <div class="war">
-            <div class="card">
-                <div id="ace" class="ace card-front">
-                    <div class="corner">
-                        <div class="number">A</div>
-                        <div class="symbol">&hearts;</div>
+                <div class="card">
+                    <div id="ace" class="ace">
+                        <div class="corner">
+                            <div class="number">A</div>
+                            <div class="symbol">&hearts;</div>
+                        </div>
+                        <div class="suit">
+                        </div>
+                        <div class="suit">
+                            <div class="top"></div>
+                            <div class="center symbol">&hearts;</div>
+                            <div class="bottom rotate"></div>
+                        </div>
+                        <div class="suit">
+                        </div>
+                        <div class="corner rotate">
+                            <div class="number">A</div>
+                            <div class="symbol">&hearts;</div>
+                        </div>
                     </div>
-                    <div class="suit">
-                    </div>
-                    <div class="suit">
-                        <div class="top"></div>
-                        <div class="center symbol">&hearts;</div>
-                        <div class="bottom rotate"></div>
-                    </div>
-                    <div class="suit">
-                    </div>
-                    <div class="corner rotate">
-                        <div class="number">A</div>
-                        <div class="symbol">&hearts;</div>
+                    <div classs="card-back"></div>
+                </div>
+            
+                <div class="card">
+                    <div id="two" class="two">
+                        <div class="corner">
+                            <div class="number">2</div>
+                            <div class="symbol">&hearts;</div>
+                        </div>
+                        <div class="suit">
+                        </div>
+                        <div class="suit">
+                            <div class="top">&hearts;</div>
+                            <div class="center"></div>
+                            <div class="bottom rotate">&hearts;</div>
+                        </div>
+                        <div class="suit">
+                        </div>
+                        <div class="corner rotate">
+                            <div class="number">2</div>
+                            <div class="symbol">&hearts;</div>
+                        </div>
                     </div>
                 </div>
-                <div classs="card-back"></div>
-            </div>
-            <div class="card">
-                <div class="two">
-                    <div class="corner">
-                        <div class="number">2</div>
-                        <div class="symbol">&hearts;</div>
-                    </div>
-                    <div class="suit">
-                    </div>
-                    <div class="suit">
-                        <div class="top">&hearts;</div>
-                        <div class="center"></div>
-                        <div class="bottom rotate">&hearts;</div>
-                    </div>
-                    <div class="suit">
-                    </div>
-                    <div class="corner rotate">
-                        <div class="number">2</div>
-                        <div class="symbol">&hearts;</div>
-                    </div>
-                </div>
+
+            <div class="background">
+                <div class="card back inner"></div>
+                <div class="card back inner"></div>
             </div>
         </div>
-        <div class="deck_player2">
-            <div id="player2" class="card-back"></div>
+        <div class="deck_player deck2">
+            <div class="board3">
+                <div class="player-board">
+                    <div class="name">Player 1</div>
+                    <div class="score">Score</div>
+                    <div class="box">0</div>
+                    <div class="cards-left">Cards left</div>
+                    <div class="box">0</div>
+                </div>
+            </div>
+            <div class="board4">
+                <div id="player2" class="card back"></div>
+                <div class="background">
+                    <div class="card back inner"></div>
+                </div>
+            </div>
         </div>
         <div class="utils"></div>
-    </div>
-
-
-    <div class="container"> 
-
-        <div class="card">
-            <div class="ace">
-                <div class="corner">
-                    <div class="number">A</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-                <div class="suit">
-                </div>
-                <div class="suit">
-                    <div class="top"></div>
-                    <div class="center">&hearts;</div>
-                    <div class="bottom rotate"></div>
-                </div>
-                <div class="suit">
-                </div>
-                <div class="corner rotate">
-                    <div class="number">A</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="two">
-                <div class="corner">
-                    <div class="number">2</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-                <div class="suit">
-                </div>
-                <div class="suit">
-                    <div class="top">&hearts;</div>
-                    <div class="center"></div>
-                    <div class="bottom rotate">&hearts;</div>
-                </div>
-                <div class="suit">
-                </div>
-                <div class="corner rotate">
-                    <div class="number">2</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="three">
-                <div class="corner">
-                    <div class="number">3</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-
-                <div class="suit">
-                </div>
-                <div class="suit">
-                    <div class="top">&hearts;</div>
-                    <div class="center">&hearts;</div>
-                    <div class="bottom rotate">&hearts;</div>
-                </div>
-                <div class="suit">
-                </div>
-                <div class="corner rotate">
-                    <div class="number">10</div>
-
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="four">
-                <div class="corner">
-                    <div class="number">4</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-                <div class="suit">
-                    <div class="top">&hearts;</div>
-                    <div class="bottom rotate">&hearts;</div>
-                </div>
-                <div class="center"></div>
-                <div class="suit">
-                    <div class="top">&hearts;</div>
-                    <div class="bottom rotate">&hearts;</div>
-                </div>
-                <div class="corner rotate">
-                    <div class="number">4</div>
-
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="five">
-                <div class="corner">
-                    <div class="number">5</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-                <div class="suit">
-                    <div class="top">&hearts;</div>
-                    <div class="bottom rotate">&hearts;</div>
-                </div>
-                <div class="center">&hearts;</div>
-                <div class="suit">
-                    <div class="top">&hearts;</div>
-                    <div class="bottom rotate">&hearts;</div>
-                </div>
-                <div class="corner rotate">
-                    <div class="number">5</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="six">
-                <div class="corner">
-                    <div class="number">6</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-                <div class="suit">
-                    <div class="top">&hearts;</div>
-                    <div class="center">&hearts;</div>
-                    <div class="bottom rotate">&hearts;</div>
-                </div>
-                <div class="center"></div>
-                <div class="suit">
-                    <div class="top">&hearts;</div>
-                    <div class="center">&hearts;</div>
-                    <div class="bottom rotate">&hearts;</div>
-                </div>
-                <div class="corner rotate">
-                    <div class="number">6</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="seven">
-                <div class="corner">
-                    <div class="number">7</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-                <div class="suit">
-                    <div class="top">&hearts;</div>
-                    <div class="center">&hearts;</div>
-                    <div class="bottom rotate">&hearts;</div>
-                </div>
-                <div class="suit">
-                    <div class="center">&hearts;</div>
-                    <div class="center"></div>
-                </div>
-                <div class="suit">
-                    <div class="top">&hearts;</div>
-                    <div class="center">&hearts;</div>
-                    <div class="bottom rotate">&hearts;</div>
-                </div>
-                <div class="corner rotate">
-                    <div class="number">7</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="eight">
-                <div class="corner">
-                    <div class="number">8</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-                <div class="suit">
-                    <div class="center">&hearts;</div>
-                    <div class="center">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                </div>
-                <div class="center"></div>
-                <div class="suit">
-                    <div class="center">&hearts;</div>
-                    <div class="center">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                </div>
-                <div class="corner rotate">
-                    <div class="number">8</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="nine">
-                <div class="corner">
-                    <div class="number">9</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-                <div class="suit">
-                    <div class="center">&hearts;</div>
-                    <div class="center">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                </div>
-                <div class="center">&hearts;</div>
-                <div class="suit">
-                    <div class="center">&hearts;</div>
-                    <div class="center">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                </div>
-                <div class="corner rotate">
-                    <div class="number">9</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="ten">
-                <div class="corner">
-                    <div class="number">10</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-                <div class="suit">
-                    <div class="center">&hearts;</div>
-                    <div class="center">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                </div>
-                <div class="suit">
-                    <div class="center">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                </div>
-                <div class="suit">
-                    <div class="center">&hearts;</div>
-                    <div class="center">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                    <div class="center rotate">&hearts;</div>
-                </div>
-                <div class="corner rotate">
-                    <div class="number">10</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="queen">
-                <div class="corner">
-                    <div class="number">Q</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-                <div class="center">
-                    <img src="img/card-queen.svg" width="90" alt="Queen card"/>
-                </div>
-                <div class="corner rotate">
-                    <div class="number">Q</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="jack">
-                <div class="corner">
-                    <div class="number">J</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-                <div class="center">
-                    <img src="img/card-jack.svg" width="90" alt="Jack card"/>
-                </div>
-                <div class="corner rotate">
-                    <div class="number">J</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="king">
-                <div class="corner">
-                    <div class="number">K</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-                <div class="center">
-                    <img src="img/card-king.svg" width="90" alt="King card"/>
-                </div>
-                <div class="corner rotate">
-                    <div class="number">K</div>
-                    <div class="symbol">&hearts;</div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <script src="script.js"></script>
