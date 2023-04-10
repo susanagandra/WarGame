@@ -145,10 +145,6 @@ body{
     font-size: 10px;
 }
 
-.red{ 
-    color:red;
-}
-
 .heart:after{ 
     content:"&hearts;";
     color:black;

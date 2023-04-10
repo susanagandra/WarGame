@@ -1,27 +1,17 @@
-function createCard (card, suit){
-    const cardSymbol = document.getElementById(card);
-    const cardSymbolLength = cardSymbol.getElementsByClassName("symbol").length;
-
-    for(i = 0; i < cardSymbolLength; i++){
-        cardSymbol.getElementsByClassName("symbol")[i].innerHTML = suit;
-    }
+function setSymbol(card) {
+  const elements = document.getElementsByClassName("symbol");
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].innerHTML = card;
+  }
 }
-createCard("ace","&diamond;")
-
-
-function changeCardColor(symbol) {
-    
-    const card = document.getElementById(symbol);
-
-    card.addClass("red");
+setSymbol("&clubs;");
 
   
-    //cardSymbol.getElementById("symbol").html("&"+symbol+";") === "hearts" || cardSymbol.getElementById("symbol").html("&"+symbol+";") === "diamond" ) {
-        //cardSymbol.addClass("red");
-        
-  //}
-  //$("body").append(cardSymbol);
+function changeColor(card) {
+  const elements = document.getElementsByClassName("card");
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].style.color = 'blue';
+  }
 }
 
-changeCardColor("ace");
-
+changeColor();
