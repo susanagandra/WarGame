@@ -4,7 +4,7 @@ function setSymbol(card) {
     elements[i].innerHTML = card;
   }
 }
-setSymbol("&clubs;");
+setSymbol("&diams;");
 
   
 function changeColor(card) {
@@ -15,3 +15,20 @@ function changeColor(card) {
 }
 
 changeColor();
+
+const card = {
+  id : ["two", "three", "four", "five", "six", "seven", "eigth", "nine", "ten", "J", "Q", "K", "A"],
+  suit : ["&diams;", "&hearts;", "&clubs;", "&spades;"]
+};
+
+const deck = [];
+
+for (let i = 0; i < card.id.length; i++) {
+  for (let j = 0; j < card.suit.length; j++) {
+    let value = i + 2;
+    let cardObj = { id: card.id[i], suit: card.suit[j], value: value };
+    deck.push(cardObj);
+  }
+}
+
+console.log(deck);
