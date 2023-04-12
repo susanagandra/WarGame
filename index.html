@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="board2">
-                <div id="player1" class="card-back"></div>
+                <div id="player1" class="card-back" onclick="playCard(this)"></div>
                 <div class="background">
                     <div class="card-inner"></div>
                 </div>
@@ -31,48 +31,64 @@
         </div>
         <div class="war">
             <div class="playground">
-                <div id="card1" class="card">
-                    <!-- <div id="ace" class="ace">
-                        <div class="corner">
-                            <div class="number">A</div>
-                            <div class="symbol">&hearts;</div>
-                        </div>
-                        <div class="suit">
-                        </div>
-                        <div class="suit">
-                            <div class="top"></div>
-                            <div class="center symbol">&hearts;</div>
-                            <div class="bottom rotate"></div>
-                        </div>
-                        <div class="suit">
-                        </div>
-                        <div class="corner rotate">
-                            <div class="number">A</div>
-                            <div class="symbol">&hearts;</div>
-                        </div>
-                    </div> -->
+                <div class="playerCards">
+                    <!-- <div class="card card-war"></div>
+                    <div class="card-back card-war"></div>
+                    <div class="card-back card-war"></div>
+                    <div class="card-back card-war"></div> -->
+                    <div id="card1" class="card">
+                        <!-- <div id="ace" class="ace">
+                            <div class="corner">
+                                <div class="number">A</div>
+                                <div class="symbol">&hearts;</div>
+                            </div>
+                            <div class="suit">
+                            </div>
+                            <div class="suit">
+                                <div class="top"></div>
+                                <div class="center symbol">&hearts;</div>
+                                <div class="bottom rotate"></div>
+                            </div>
+                            <div class="suit">
+                            </div>
+                            <div class="corner rotate">
+                                <div class="number">A</div>
+                                <div class="symbol">&hearts;</div>
+                            </div>
+                        </div> -->
+                    </div>
                 </div>
             
-                <div id="card2" class="card">
-                    <!-- <div id="two" class="two">
-                        <div class="corner">
-                            <div class="number">2</div>
-                            <div class="symbol">&hearts;</div>
-                        </div>
-                        <div class="suit">
-                        </div>
-                        <div class="suit">
-                            <div class="top">&hearts;</div>
-                            <div class="center"></div>
-                            <div class="bottom rotate">&hearts;</div>
-                        </div>
-                        <div class="suit">
-                        </div>
-                        <div class="corner rotate">
-                            <div class="number">2</div>
-                            <div class="symbol">&hearts;</div>
-                        </div>
-                    </div> -->
+                <div class="playerCards">
+                    <!-- <div class="card card-war"></div>
+                    <div class="card-back card-war"></div>
+                    <div class="card-back card-war"></div>
+                    <div class="card-back card-war"></div>  
+                    <div class="card card-war"></div>
+                    <div class="card-back card-war"></div>
+                    <div class="card-back card-war"></div>
+                    <div class="card-back card-war"></div>    -->                 
+                    <div id="card2" class="card">
+                        <!-- <div id="two" class="two">
+                            <div class="corner">
+                                <div class="number">2</div>
+                                <div class="symbol">&hearts;</div>
+                            </div>
+                            <div class="suit">
+                            </div>
+                            <div class="suit">
+                                <div class="top">&hearts;</div>
+                                <div class="center"></div>
+                                <div class="bottom rotate">&hearts;</div>
+                            </div>
+                            <div class="suit">
+                            </div>
+                            <div class="corner rotate">
+                                <div class="number">2</div>
+                                <div class="symbol">&hearts;</div>
+                            </div>
+                        </div> -->
+                    </div>
                 </div>
             </div>
 
@@ -92,7 +108,7 @@
                 </div>
             </div>
             <div class="board4">
-                <div id="player2" class="card-back"></div>
+                <div id="player2" class="card-back" onclick="playCard(this)"></div>
                 <div class="background">
                     <div class="card-inner"></div>
                 </div>
@@ -101,11 +117,11 @@
         <div class="utils"></div>
     </div>
 
-    <div class="overlay">
+    <div id="overlay">
         <div class="white-box">
             <div class="welcome">WELCOME</div>
             <div class="question">Do you wanna play a game?</div>
-            <div class="play">PLAY &#9654;</div>
+            <div id="playBtn" onclick="playGame()">PLAY &#9654;</div>
         </div>
     </div>
 
