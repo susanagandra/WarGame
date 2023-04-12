@@ -1,17 +1,18 @@
-var extern = document.getElementsByTagName("link")[0].import;
+includeHTML();
 
-const id = ["two", "three", "four", "five", "six", "seven", "eigth", "nine", "ten", "J", "Q", "K", "A"];
+const id = ["two", "three", "four", "five", "six", "seven", "eigth", "nine", "ten", "jack", "queen", "king", "ace"];
 const suit = ["&diams;", "&hearts;", "&clubs;", "&spades;"];
 const deck = [];
-let playerDeck1 = [];
-let playerDeck2 = [];
+let players = {
+    player1: {},
+    player2: {},
+};
 let gameOver = false;
 
 /*while(!gameOver){
 
     
 }*/
-
 
 
 const overlay = document.getElementById("overlay");
@@ -30,6 +31,12 @@ const playGame = () => {
     startGame();
 }
 
+const startGame = () => {
+    createDeck();
+    createPlayersDeck();
+    createPlayer();
+    checkPlay();
+}
 
 const playCard = (event) => {
 
@@ -41,15 +48,16 @@ const playCard = (event) => {
 
     player === "player1" ? cardToPlay.classList.add('card-animation-flyup') : cardToPlay.classList.add('card-animation-flydown');
 
-        
     createCard(cardToPlay, nrPlayer);
 };
 
-const startGame = () => {
-    createDeck();
-    createPlayersDeck();
-}
+
 const checkWinner = () => {}
+
+
+const checkPlay = () => {
+
+}
 
 
 
@@ -82,36 +90,51 @@ const createPlayersDeck = () => {
     playerDeck2 = deck.slice(halfDeckLength);
 }
 
+const createPlayer = () => {
+
+    /*const i = 1;
+
+    Object.keys(players).map(player => player.id = "player" + i);
+   Object.keys(players).map(player => console.log(typeof player));
+    
+
+    console.log(players.player1.id);
+    console.log(Object.keys(players.player1));*/
+
+    players.player1.id = "player1";
+    players.player1.deck = playerDeck1;
+
+    players.player2.id = "player2";
+    players.player2.deck = playerDeck2;
+}
+
 const createCard = (card, nr) => {
+    //ID DA CARTA DO ARRAY
+    const cardId = players["player" + nr].deck[0].id;
+    const suit = players["player" + nr].deck[0].suit;
+    const cardObject = document.getElementById(cardId);
+    const symbol = document.getElementById(cardId).getElementsByClassName("symbol");
 
-    const playerDeck = "playerDeck" + nr;
-    const playerCard = document.getElementById("card" + nr);
-    const teste = document.getElementById("ace");
+    Array.from(symbol).forEach(symbol => setSymbol(symbol, suit));
 
-    playerCard.appendChild(teste);
-
-    //playerDeck[0].id
-
-    //playCard.appendChild(playerDeck[0].id); 
-
-    //playerDeck[0]
-
-
+    changeColor(card, suit);
+    card.appendChild(cardObject);
 }
 
+const setSymbol = (symbol, suit) => {
 
-const setSymbol = (card) => {
-    const elements = document.getElementsByClassName("symbol");
-    Array.from(elements).forEach((element) => {
-        element.innerHTML = card;
-    });
+    symbol.innerHTML = suit;
 }
 
-const changeColor = () => {
-    const elements = document.getElementsByClassName("card");
-    Array.from(elements).forEach((element) => {
-        element.style.color = color;
-    });
+const changeColor = (card, suit) => {
+
+    switch (suit) {
+        case "&hearts;":
+        case "&diams;":
+            card.style.color = "red";
+
+        default: card.style.color = "black";
+    }
 }
 
 const shuffle = (deck) => {
@@ -150,3 +173,34 @@ cardBack[cardBackLength].addEventListener("mouseover", (event) => {
 cardBack[cardBackLength].addEventListener("mouseout", (event) => {
     event.target.classList.remove('card-back-hover');
 });
+
+
+
+//CALL EXERNAL HTML
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /* Loop through a collection of all HTML elements: */
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /* Make an HTTP request using the attribute value as the file name: */
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /* Remove the attribute, and call this function once more: */
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /* Exit the function: */
+      return;
+    }
+  }
+}
