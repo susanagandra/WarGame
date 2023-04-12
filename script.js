@@ -33,32 +33,20 @@ const playGame = () => {
 
 const playCard = (event) => {
 
-    //const player = document.getElementById(event.id);
-    const card1 = document.getElementById('card1');
-    const card2 = document.getElementById('card2');
     const player = event.id;
-
-    const nrPlayer = player.chartAt(player.length);
-    console.log(nrPlayer);
-
-    if (player === "player1") {
-        card1.style.visibility = 'visible';
-        card1.classList.add('card-animation-flyup');
-
-        createCard(player1Deck);
-
-        checkWinner();
-
-    } else {
-        card2.style.visibility = 'visible';
-        card2.classList.add('card-animation-flydown');
-    }
-
-    createCard('player' + nrPlayer + 'Deck');
-
+    const nrPlayer = String(player).charAt(player.length-1);
+    const cardToPlay = document.getElementById('card' + nrPlayer);
     
+    cardToPlay.style.visibility = 'visible';
 
-    console.log(event.id);
+    player === "player1" ? cardToPlay.classList.add('card-animation-flyup') : cardToPlay.classList.add('card-animation-flydown');
+
+        
+    //createCard(player1Deck);
+    //checkWinner();
+
+    //createCard('player' + nrPlayer + 'Deck');
+
 };
 
 
