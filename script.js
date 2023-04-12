@@ -1,24 +1,19 @@
 includeHTML();
 
-const id = ["two", "three", "four", "five", "six", "seven", "eigth", "nine", "ten", "jack", "queen", "king", "ace"];
+const id = ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace"];
 const suit = ["&diams;", "&hearts;", "&clubs;", "&spades;"];
 const deck = [];
 let players = {
     player1: {},
     player2: {},
 };
-let gameOver = false;
-
-/*while(!gameOver){
-
-    
-}*/
-
-
+const playerRound = document.getElementsByClassName("player");
 const overlay = document.getElementById("overlay");
-let cardInner = document.getElementsByClassName("card-inner");
 let cardBack = document.getElementsByClassName("card-back");
 const cardBackLength = cardBack.length-1;
+
+let gameOver = false;
+let counter = 0;
 
 
 const playGame = () => {
@@ -32,13 +27,14 @@ const playGame = () => {
 }
 
 const startGame = () => {
+
     createDeck();
     createPlayersDeck();
     createPlayer();
-    checkPlay();
 }
 
 const playCard = (event) => {
+    counter++;
 
     const player = event.id;
     const nrPlayer = String(player).charAt(player.length-1);
@@ -48,17 +44,65 @@ const playCard = (event) => {
 
     player === "player1" ? cardToPlay.classList.add('card-animation-flyup') : cardToPlay.classList.add('card-animation-flydown');
 
+
+    console.log(cardToPlay);
     createCard(cardToPlay, nrPlayer);
+    event.style.pointerEvents = "none";
+
+    if (counter === 2){
+        Array.from(playerRound).forEach(el => el.style.pointerEvents = "initial");
+        counter = 0;
+        checkPlay();
+    }
 };
 
 
 const checkWinner = () => {}
 
-
-const checkPlay = () => {
+const war = () => {
 
 }
 
+const checkPlay = () => {
+    let score1 = document.getElementById("box1");
+    let score2 = document.getElementById("box2");
+
+    let winner = 0;
+
+    const valuePlayer1 = players.player1.deck[0].value;
+    const valuePlayer2 = players.player2.deck[0].value;
+
+    if (valuePlayer1 === valuePlayer2) {
+        war();
+        return;
+    }
+    if (valuePlayer1 > valuePlayer2) {
+        score1.innerHTML++;
+        winner=1;
+    } else {
+        score2.innerHTML++;
+        winner=2;
+    }
+    incrementDeck(winner);
+    deleteCardFromDeck();
+
+    console.log(players.player1.deck, players.player2.deck);
+}
+
+const incrementDeck = (winner) => {
+    players["player" + winner].deck.push(players.player1.deck[0], players.player2.deck[0]);
+}
+
+const deleteCardFromDeck = () => {
+    players.player1.deck.shift(0); 
+    players.player2.deck.shift(0);
+
+    let cardScore1 = document.getElementById("cardbox1");
+    let cardScore2 = document.getElementById("cardbox2");
+
+    cardScore1.innerHTML = players.player1.deck.length;
+    cardScore2.innerHTML = players.player2.deck.length;
+}
 
 
 ////////////////
@@ -88,6 +132,8 @@ const createPlayersDeck = () => {
     const halfDeckLength = Math.floor(deck.length / 2);
     playerDeck1 = deck.slice(0, halfDeckLength);
     playerDeck2 = deck.slice(halfDeckLength);
+
+    console.log(playerDeck1, playerDeck2);
 }
 
 const createPlayer = () => {
@@ -113,6 +159,9 @@ const createCard = (card, nr) => {
     const cardId = players["player" + nr].deck[0].id;
     const suit = players["player" + nr].deck[0].suit;
     const cardObject = document.getElementById(cardId);
+    card.innerHTML = "";
+
+    console.log(cardId);
     const symbol = document.getElementById(cardId).getElementsByClassName("symbol");
 
     Array.from(symbol).forEach(symbol => setSymbol(symbol, suit));
@@ -128,10 +177,14 @@ const setSymbol = (symbol, suit) => {
 
 const changeColor = (card, suit) => {
 
+    //console.log(card);
+    //console.log(suit);
+
     switch (suit) {
         case "&hearts;":
         case "&diams;":
             card.style.color = "red";
+            break;
 
         default: card.style.color = "black";
     }
@@ -143,10 +196,6 @@ const shuffle = (deck) => {
         [deck[i], deck[j]] = [deck[j], deck[i]];
     });
 }
-shuffle(deck);
-
-
-
 
 const endGame = () => {
     if (player1Deck.length === 0 || player2Deck.length === 0) {

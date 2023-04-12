@@ -17,13 +17,13 @@
                 <div class="player-board">
                     <div class="name">Player 1</div>
                     <div class="score">Score:</div>
-                    <div class="box">0</div>
+                    <div id="box1" class="box">0</div>
                     <div class="cards-left">Cards:</div>
-                    <div class="box">0</div>
+                    <div id="cardbox1" class="box">26</div>
                 </div>
             </div>
             <div class="board2">
-                <div id="player1" class="card-back" onclick="playCard(this)"></div>
+                <div id="player1" class="card-back player" onclick="playCard(this)"></div>
                 <div class="background">
                     <div class="card-inner"></div>
                 </div>
@@ -37,25 +37,6 @@
                     <div class="card-back card-war"></div>
                     <div class="card-back card-war"></div> -->
                     <div id="card1" class="card">
-                        <!-- <div id="ace" class="ace">
-                            <div class="corner">
-                                <div class="number">A</div>
-                                <div class="symbol">&hearts;</div>
-                            </div>
-                            <div class="suit">
-                            </div>
-                            <div class="suit">
-                                <div class="top"></div>
-                                <div class="center symbol">&hearts;</div>
-                                <div class="bottom rotate"></div>
-                            </div>
-                            <div class="suit">
-                            </div>
-                            <div class="corner rotate">
-                                <div class="number">A</div>
-                                <div class="symbol">&hearts;</div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             
@@ -69,25 +50,6 @@
                     <div class="card-back card-war"></div>
                     <div class="card-back card-war"></div>    -->                 
                     <div id="card2" class="card">
-                        <!-- <div id="two" class="two">
-                            <div class="corner">
-                                <div class="number">2</div>
-                                <div class="symbol">&hearts;</div>
-                            </div>
-                            <div class="suit">
-                            </div>
-                            <div class="suit">
-                                <div class="top">&hearts;</div>
-                                <div class="center"></div>
-                                <div class="bottom rotate">&hearts;</div>
-                            </div>
-                            <div class="suit">
-                            </div>
-                            <div class="corner rotate">
-                                <div class="number">2</div>
-                                <div class="symbol">&hearts;</div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -100,15 +62,15 @@
         <div class="deck_player deck2">
             <div class="board3">
                 <div class="player-board">
-                    <div class="name">Player 1</div>
+                    <div class="name">Player 2</div>
                     <div class="score">Score:</div>
-                    <div class="box">0</div>
+                    <div id="box2" class="box">0</div>
                     <div class="cards-left">Cards:</div>
-                    <div class="box">0</div>
+                    <div id="cardbox2" class="box">26</div>
                 </div>
             </div>
             <div class="board4">
-                <div id="player2" class="card-back" onclick="playCard(this)"></div>
+                <div id="player2" class="card-back player" onclick="playCard(this)"></div>
                 <div class="background">
                     <div class="card-inner"></div>
                 </div>
@@ -125,7 +87,7 @@
         </div>
     </div>
 
-    <div w3-include-html="cards.html"></div>
+    <div w3-include-html="cards.html" style="display: none;"></div>
 
     <script src="script.js"></script>
 </body>
