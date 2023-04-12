@@ -44,7 +44,6 @@ const playCard = (event) => {
 
     player === "player1" ? cardToPlay.classList.add('card-animation-flyup') : cardToPlay.classList.add('card-animation-flydown');
 
-
     console.log(cardToPlay);
     createCard(cardToPlay, nrPlayer);
     event.style.pointerEvents = "none";
@@ -86,7 +85,7 @@ const checkPlay = () => {
     incrementDeck(winner);
     deleteCardFromDeck();
 
-    console.log(players.player1.deck, players.player2.deck);
+    //console.log(players.player1.deck, players.player2.deck);
 }
 
 const incrementDeck = (winner) => {
@@ -147,6 +146,12 @@ const createPlayer = () => {
     console.log(players.player1.id);
     console.log(Object.keys(players.player1));*/
 
+
+    /*for (const key in players) {
+        console.log(`${key}: ${players[key]}`);
+    }*/
+
+
     players.player1.id = "player1";
     players.player1.deck = playerDeck1;
 
@@ -161,17 +166,18 @@ const createCard = (card, nr) => {
     const cardObject = document.getElementById(cardId);
     card.innerHTML = "";
 
-    console.log(cardId);
+    //console.log(cardId);
     const symbol = document.getElementById(cardId).getElementsByClassName("symbol");
 
     Array.from(symbol).forEach(symbol => setSymbol(symbol, suit));
 
     changeColor(card, suit);
+    //card.appendChild(cardObject);
     card.appendChild(cardObject);
+    //card.innerHTML = cardObject;
 }
 
 const setSymbol = (symbol, suit) => {
-
     symbol.innerHTML = suit;
 }
 
