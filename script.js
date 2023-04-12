@@ -1,18 +1,23 @@
+while(!endGame(player1Deck, player2Deck)){
+  startGame();
+  creatDeck(deck);
+}
+
 function setSymbol(card) {
   const elements = document.getElementsByClassName("symbol");
-  for (let i = 0; i < elements.length; i++) {
-    elements[i].innerHTML = card;
-  }
+  Array.from(elements).forEach((element) => {
+    element.innerHTML = card;
+  });
 }
-setSymbol("&diams;");
+setSymbol("&clubs;");
 
-function changeColor(card) {
+function changeColor() {
   const elements = document.getElementsByClassName("card");
-  for (let i = 0; i < elements.length; i++) {
-    elements[i].style.color = 'green';
-  }
+  Array.from(elements).forEach((element) => {
+    element.style.color = color;
+  });
 }
-changeColor();
+//changeColor();
 
 const createCard = (id, suit, value) => {
   return {
@@ -55,3 +60,11 @@ const player2Deck = deck.slice(halfDeckLength);
 
 console.log(player1Deck);
 console.log(player2Deck);
+
+function endGame() {
+  if (player1Deck.length === 0 || player2Deck.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
