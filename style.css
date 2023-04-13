@@ -85,6 +85,7 @@ body{
     padding: 10px;
     background-color: white;
     color: red;
+    font-size: 36px;
 
     -webkit-box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
@@ -204,7 +205,6 @@ body{
     grid-template-rows: 1fr; 
     gap: 2px 2px;
     height: 100%;
-    font-size: 36px;
 }
 
 .queen, .jack, .king {
@@ -246,12 +246,6 @@ body{
     font-size: 10px;
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
 .card-animation-flyin, .card-animation-flyinLeft {
     animation-timing-function: ease-in-out;
     animation: flyin 0.4s;
@@ -272,55 +266,6 @@ body{
 .card-animation-flydown {
     animation-timing-function: ease-in-out;
     animation: flydown 0.4s;
-}
-
-@keyframes flyin {
-    0%   { 
-        transform: translateX(300%);
-        opacity: 0;		
-        }
-    100% { 
-        transform: translateX(0%);
-        opacity: 1;
-        }
-}
-
-@keyframes flyinLeft {
-    0%   { 
-        transform: translateX(-300%);
-        opacity: 0;		
-        }
-    100% { 
-        transform: translateX(0%);
-        opacity: 1;
-        }
-}
-
-@keyframes flydown {
-    0%   { 
-        transform: translate(-20%, 100%);
-        opacity: 0;		
-        }
-    100% { 
-        transform: translate(0%, 0%);
-        opacity: 1;
-        }
-}
-
-@keyframes flyup {
-    0%   { 
-        transform: translate(20%, -100%);
-        opacity: 0;		
-        }
-    100% { 
-        transform: translate(0%, 0%);
-        opacity: 1;
-        }
-}
-
-@keyframes change-color {
-    from { background-color: rgb(255, 51, 0); }
-	to { background-color: rgb(255, 132, 0); }
 }
 
 #overlay {
@@ -375,4 +320,70 @@ body{
 	-ms-animation: change-color 1s infinite alternate;
 	-o-animation: change-color 1s infinite alternate;
 	animation: change-color 1s infinite alternate;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        font-size: 22px;
+    }
+
+    .card, .card-back, .card-inner {
+        width: 115px;
+        height: 165px;
+        font-size: 32px;
+    }
+    .svg-card {
+        width: 67px;
+        height: 100px;
+        font-size: 8px;
+    }
+}
+
+@keyframes flyin {
+    0%   { 
+        transform: translateX(300%);
+        opacity: 0;		
+        }
+    100% { 
+        transform: translateX(0%);
+        opacity: 1;
+        }
+}
+
+@keyframes flyinLeft {
+    0%   { 
+        transform: translateX(-300%);
+        opacity: 0;		
+        }
+    100% { 
+        transform: translateX(0%);
+        opacity: 1;
+        }
+}
+
+@keyframes flydown {
+    0%   { 
+        transform: translate(-20%, 100%);
+        opacity: 0;		
+        }
+    100% { 
+        transform: translate(0%, 0%);
+        opacity: 1;
+        }
+}
+
+@keyframes flyup {
+    0%   { 
+        transform: translate(20%, -100%);
+        opacity: 0;		
+        }
+    100% { 
+        transform: translate(0%, 0%);
+        opacity: 1;
+        }
+}
+
+@keyframes change-color {
+    from { background-color: rgb(255, 51, 0); }
+	to { background-color: rgb(255, 132, 0); }
 }

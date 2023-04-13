@@ -17,6 +17,8 @@ const cardWar1 = document.getElementById('cardWar1');
 const cardWar2 = document.getElementById('cardWar2');
 let cardScore1 = document.getElementById("cardbox1");
 let cardScore2 = document.getElementById("cardbox2");
+let score1 = document.getElementById("box1");
+let score2 = document.getElementById("box2");
 const cardBackLength = cardBack.length-1;
 let warArray = [];
 
@@ -113,8 +115,6 @@ const createCard = (card, nr) => {
 }
 
 const checkPlay = (card1, card2) => {
-    let score1 = document.getElementById("box1");
-    let score2 = document.getElementById("box2");
     let winnerCard = "";
     let winner = 0;
 
@@ -127,7 +127,7 @@ const checkPlay = (card1, card2) => {
         setTimeout(() => {
             war();
             checkPlay(cardWar1, cardWar2);
-        }, 1000);
+        }, 1500);
     } else {
         if (valuePlayer1 > valuePlayer2) {
             winnerCard = card1;
@@ -157,12 +157,16 @@ const removeCards = (card) => {
 const incrementDeck = (winner) => {
     players["player" + winner].deck.push(players.player1.deck[0], players.player2.deck[0]);
     players["player" + winner].deck.concat(warArray);
+
+    console.log(players.player1.deck);
+    console.log(players.player2.deck);
+    console.log(warArray);
 }
 
 const deleteCardFromDeck = () => {
     Object.values(players).forEach(element => element.deck.shift(0));
-    console.log(players.player1.deck.length);
-    console.log(players.player2.deck.length);
+    //console.log(players.player1.deck.length);
+    //console.log(players.player2.deck.length);
 }
 
 const setScore = () => {
@@ -183,9 +187,9 @@ const war = () => {
             //arrayTemp.push(element.deck.slice(0, 3));
             element.deck.splice(0, 3);
         });
-        console.log(warArray);
+        /*console.log(warArray);
         console.log(players.player1.deck.length);
-        console.log(players.player2.deck.length);
+        console.log(players.player2.deck.length);*/
     }
 
     for (let i = 0; i < warCards.length; i++) {
