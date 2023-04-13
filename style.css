@@ -22,9 +22,9 @@ body{
 .card-deck {
     display: flex;
     flex-wrap: wrap;
-  }
+}
 
-  .header{
+.header{
     width: 100%;
     color:white;
     text-align: center;
@@ -33,14 +33,14 @@ body{
     font-family: "Righteous", Arial, Helvetica, sans-serif;
     font-size: 32px;
 }
-  
-  .deck_player {
+
+.deck_player {
     display: flex;
     justify-content: center;
 
     width: 100%;
     margin-bottom: 15px;
-  }
+}
 
 .deck2 {
     flex-direction: row-reverse;
@@ -54,27 +54,27 @@ body{
     
     width: 100%;
     margin-bottom: 15px;
-  }
+}
 
-  .playground {
+.playground {
     display: flex;
     justify-content: center;
-  }
+}
 
-  .playerCards {
+.playerCards {
     display: flex;
     position: relative;
-  }
+}
 
-  .background {
+.background {
     display: flex;
     position: absolute;
     z-index: 1;
-  }
+}
 
-  #card1, #card2 {
+#card1, #card2 {
     visibility: hidden;
-  }
+}
 
 .card {
     width: 130px;
@@ -97,7 +97,7 @@ body{
     box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
 }
 
-.playerCards:nth-child(2) {
+/*.playerCards:nth-child(2) {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     z-index: 2;
@@ -121,7 +121,7 @@ body{
 .playerCards .card-war:nth-child(1) {
     transform: rotate(5deg);
     z-index: 5;
-}
+}*/
 
 .card-back {
     visibility: hidden;
@@ -273,7 +273,7 @@ body{
 
 @keyframes flydown {
     0%   { 
-        transform: translate(20%, 100%);
+        transform: translate(-20%, 100%);
         /*transform: translateX(50%);*/
         opacity: 0;		
         }
