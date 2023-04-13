@@ -8,13 +8,20 @@ let players = {
     player2: {},
 };
 const playerRound = document.getElementsByClassName("player");
+const playerCards = document.getElementsByClassName("playerCards");
 const overlay = document.getElementById("overlay");
-let cardBack = document.getElementsByClassName("card-back");
+const cardBack = document.getElementsByClassName("card-back");
+const cardToPlay1 = document.getElementById('card1');
+const cardToPlay2 = document.getElementById('card2');
+const cardWar1 = document.getElementById('cardWar1');
+const cardWar2 = document.getElementById('cardWar2');
+let cardScore1 = document.getElementById("cardbox1");
+let cardScore2 = document.getElementById("cardbox2");
 const cardBackLength = cardBack.length-1;
+let warArray = [];
 
 let gameOver = false;
 let counter = 0;
-
 
 const playGame = () => {
     overlay.style.display = "none";
@@ -41,7 +48,6 @@ const createDeck = () => {
             deck.push(cardObject(id, suit, value));
         });
     });
-
     shuffle(deck);
 }
 
@@ -53,25 +59,15 @@ const createPlayersDeck = () => {
 
 const createPlayer = () => {
 
-    //players.player1.id = "player1";
     players.player1.deck = playerDeck1;
-
-    //players.player2.id = "player2";
     players.player2.deck = playerDeck2;
-
-    console.log(players.player1.deck);
-    console.log(players.player1.deck[0]);
-    console.log(players.player2.deck);
-    console.log(players.player2.deck[0]);
-
-    let nr = 1;
 
     //Object.values(players).forEach(element => element.id = "player" + nr);
     //Object.values(players).forEach(element => element.deck = playerDeck1);
-
+    
+    let nr = 1;
     Object.values(players).forEach(function (element){
         element.id = "player" + nr;
-        //element.deck = 
         nr++;
     });
 }
@@ -88,31 +84,15 @@ const playCard = (event) => {
     player === "player1" ? animation(cardToPlay, 20, -100) : animation(cardToPlay, -20, 100);
     //player === "player1" ? cardToPlay.classList.add('card-animation-flyup') : cardToPlay.classList.add('card-animation-flydown');
 
-    console.log(cardToPlay);
-    createCard(cardToPlay, nrPlayer);
     event.style.pointerEvents = "none";
 
+    createCard(cardToPlay, nrPlayer);
+
     if (counter === 2){
-        Array.from(playerRound).forEach(el => el.style.pointerEvents = "initial");
         counter = 0;
-        checkPlay();
-
-        const teste = document.getElementsByClassName('playerCards');
-        Array.from(teste).forEach(el => el.children.style.visibility = "hidden");
-
-        //cardToPlay.style.visibility = 'hidden';
+        checkPlay(cardToPlay1, cardToPlay2);
     }
 };
-
-const animation = (cardToPlay, x, y) => {
-    cardToPlay.animate([
-        {transform: 'translate(' + x +'%, ' + y +'%)', opacity: '0'},
-        {transform: 'translate(0%, 0%)', opacity: '1'}
-    ],
-        {
-            duration: 1000, easing: 'ease-in-out'
-        });
-}
 
 const createCard = (card, nr) => {
 
@@ -128,19 +108,14 @@ const createCard = (card, nr) => {
 
     card.innerHTML = "";
     card.appendChild(cardObject.cloneNode(true));
+
+    //war();
 }
 
-
-const checkWinner = () => {}
-
-const war = () => {
-
-}
-
-const checkPlay = () => {
+const checkPlay = (card1, card2) => {
     let score1 = document.getElementById("box1");
     let score2 = document.getElementById("box2");
-
+    let winnerCard = "";
     let winner = 0;
 
     const valuePlayer1 = players.player1.deck[0].value;
@@ -149,34 +124,142 @@ const checkPlay = () => {
     //Object.values(players).forEach(element => element.deck[0].value);
 
     if (valuePlayer1 === valuePlayer2) {
-        war();
-        //return;
-    }
-    if (valuePlayer1 > valuePlayer2) {
-        score1.innerHTML++;
-        winner=1;
+        setTimeout(() => {
+            war();
+            checkPlay(cardWar1, cardWar2);
+        }, 1000);
     } else {
-        score2.innerHTML++;
-        winner=2;
+        if (valuePlayer1 > valuePlayer2) {
+            winnerCard = card1;
+            score1.innerHTML++;
+            winner = 1;
+            //war();
+        } else {
+            winnerCard = card2;
+            score2.innerHTML++;
+            winner = 2;
+        }
+
+        removeCards(winnerCard);
+        incrementDeck(winner);
+        deleteCardFromDeck();
     }
-    incrementDeck(winner);
-    deleteCardFromDeck();
+    setScore();
+}
+
+const removeCards = (card) => {
+
+    setTimeout(() => {
+        scale(card);
+    }, 1000);
 }
 
 const incrementDeck = (winner) => {
     players["player" + winner].deck.push(players.player1.deck[0], players.player2.deck[0]);
+    players["player" + winner].deck.concat(warArray);
 }
 
 const deleteCardFromDeck = () => {
     Object.values(players).forEach(element => element.deck.shift(0));
+    console.log(players.player1.deck.length);
+    console.log(players.player2.deck.length);
+}
 
-    let cardScore1 = document.getElementById("cardbox1");
-    let cardScore2 = document.getElementById("cardbox2");
-
+const setScore = () => {
     cardScore1.innerHTML = players.player1.deck.length;
     cardScore2.innerHTML = players.player2.deck.length;
 }
 
+const war = () => {
+    const warCards = document.getElementsByClassName("card-war");
+
+    if (players.player1.deck.length < 3 || players.player2.deck.length < 3) {
+        checkWinner();
+    } else {
+        Object.values(players).forEach(element => {
+            for(let i = 0; i < 3; i++){
+                warArray.push(element.deck[i]);
+            }
+            //arrayTemp.push(element.deck.slice(0, 3));
+            element.deck.splice(0, 3);
+        });
+        console.log(warArray);
+        console.log(players.player1.deck.length);
+        console.log(players.player2.deck.length);
+    }
+
+    for (let i = 0; i < warCards.length; i++) {
+        warCards[i].style.visibility = "visible";
+        warCards[i].style.opacity = "1";
+        fadeIn(warCards[i]);
+    }
+
+    createCard(cardWar1, 1);
+    createCard(cardWar2, 2);
+}
+
+
+const checkWinner = () => {
+    if (players.player1.deck.length === 0 || players.player2.deck.length < 3) {
+       // return ("Player 2 wins the game!");
+      };
+    if (players.player2.deck.length === 0 || players.player1.deck.length < 3) {
+        //return ("Player 2 wins the game!");
+      };
+}
+
+const animation = (cardToPlay, x, y) => {
+    cardToPlay.animate([
+        {transform: 'translate(' + x +'%, ' + y +'%)', opacity: '0'},
+        {transform: 'translate(0%, 0%)', opacity: '1'}
+    ],
+        {
+            duration: 500, easing: 'ease-in-out'
+        });
+}
+
+const fadeOut = (cardToPlay) => {
+    cardToPlay.animate([
+        {opacity: '1'},
+        {opacity: '0'}
+    ],
+        {
+            duration: 500, easing: 'ease-in-out'
+        }).onfinish = () => {
+            const playerCardsDivs = document.querySelectorAll('.playerCards');
+
+            playerCardsDivs.forEach(div => {
+                const allDivs = div.querySelectorAll('div');
+                
+                allDivs.forEach(div => {
+                    div.style.visibility = 'hidden';
+                });
+            });
+
+            Array.from(playerRound).forEach(el => el.style.pointerEvents = "initial");
+        };
+}
+
+const fadeIn = (cardsToFade) => {
+    cardsToFade.animate([
+        {opacity: '0'},
+        {opacity: '1'}
+    ],
+        {
+            duration: 1000, easing: 'ease-in-out'
+        });
+}
+
+const scale = (cardToPlay) => {
+    cardToPlay.animate([
+        {transform: 'scale(1.1)'}
+    ],
+        {
+            duration: 500, easing: 'ease-in-out'
+        }).onfinish = () => {
+            Array.from(playerCards).forEach(element => fadeOut(element));
+        };
+}
 
 ////////////////
 
@@ -193,7 +276,6 @@ const setSymbol = (symbol, suit) => {
 }
 
 const changeColor = (card, suit) => {
-
     switch (suit) {
         case "&hearts;":
         case "&diams;":

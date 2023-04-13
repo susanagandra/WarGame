@@ -59,6 +59,7 @@ body{
 .playground {
     display: flex;
     justify-content: center;
+    z-index: 2;
 }
 
 .playerCards {
@@ -91,6 +92,8 @@ body{
 }
 
 .card-war {
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
     -webkit-box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
@@ -101,30 +104,36 @@ body{
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     z-index: 2;
-}
+}*/
 
-.playerCards .card-war:nth-child(1) {
+/*.playerCards .card-war:nth-child(1) {
     top: 5px;
     right: 10px;
-}
+}*/
 
-.playerCards .card-war:nth-child(2) {
+.playerCards .card-war:nth-child(1) {
     top: 10px;
     right: 15px;
 }
 
-.playerCards .card-war:nth-child(3) {
+.playerCards .card-war:nth-child(2) {
     top: 15px;
     right: 20px;
 }
 
-.playerCards .card-war:nth-child(1) {
+.playerCards .card-war:nth-child(3) {
+    top: 20px;
+    right: 25px;
+}
+
+.playerCards .card-war:nth-child(4) {
     transform: rotate(5deg);
     z-index: 5;
-}*/
+    right: 30px;
+}
 
 .card-back {
-    visibility: hidden;
+    /*visibility: hidden;*/
     z-index: 2;
     width: 130px;
     height: 180px;
@@ -243,11 +252,16 @@ body{
 }
 
 
-.card-animation-flyin {
+.card-animation-flyin, .card-animation-flyinLeft {
     animation-timing-function: ease-in-out;
     animation: flyin 0.4s;
 
     /*animation-iteration-count: 8;*/
+}
+
+.card-animation-flyinLeft {
+    animation-timing-function: ease-in-out;
+    animation: flyinLeft 0.6s;
 }
 
 .card-animation-flyup {
@@ -263,6 +277,17 @@ body{
 @keyframes flyin {
     0%   { 
         transform: translateX(300%);
+        opacity: 0;		
+        }
+    100% { 
+        transform: translateX(0%);
+        opacity: 1;
+        }
+}
+
+@keyframes flyinLeft {
+    0%   { 
+        transform: translateX(-300%);
         opacity: 0;		
         }
     100% { 
