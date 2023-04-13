@@ -46,11 +46,9 @@ const createDeck = () => {
 }
 
 const createPlayersDeck = () => {
-    const halfDeckLength = Math.floor(deck.length / 2);
+    const halfDeckLength = deck.length / 2;
     playerDeck1 = deck.slice(0, halfDeckLength);
     playerDeck2 = deck.slice(halfDeckLength);
-
-    console.log(playerDeck1, playerDeck2);
 }
 
 const createPlayer = () => {
@@ -61,6 +59,11 @@ const createPlayer = () => {
     //players.player2.id = "player2";
     players.player2.deck = playerDeck2;
 
+    console.log(players.player1.deck);
+    console.log(players.player1.deck[0]);
+    console.log(players.player2.deck);
+    console.log(players.player2.deck[0]);
+
     let nr = 1;
 
     //Object.values(players).forEach(element => element.id = "player" + nr);
@@ -70,7 +73,6 @@ const createPlayer = () => {
         element.id = "player" + nr;
         //element.deck = 
         nr++;
-        console.log(element.id);
     });
 }
 
@@ -83,9 +85,10 @@ const playCard = (event) => {
     
     cardToPlay.style.visibility = 'visible';
 
-    player === "player1" ? cardToPlay.classList.add('card-animation-flyup') : cardToPlay.classList.add('card-animation-flydown');
+    player === "player1" ? animation(cardToPlay, 20, -100) : animation(cardToPlay, -20, 100);
+    //player === "player1" ? cardToPlay.classList.add('card-animation-flyup') : cardToPlay.classList.add('card-animation-flydown');
 
-    //console.log(cardToPlay);
+    console.log(cardToPlay);
     createCard(cardToPlay, nrPlayer);
     event.style.pointerEvents = "none";
 
@@ -93,8 +96,39 @@ const playCard = (event) => {
         Array.from(playerRound).forEach(el => el.style.pointerEvents = "initial");
         counter = 0;
         checkPlay();
+
+        const teste = document.getElementsByClassName('playerCards');
+        Array.from(teste).forEach(el => el.children.style.visibility = "hidden");
+
+        //cardToPlay.style.visibility = 'hidden';
     }
 };
+
+const animation = (cardToPlay, x, y) => {
+    cardToPlay.animate([
+        {transform: 'translate(' + x +'%, ' + y +'%)', opacity: '0'},
+        {transform: 'translate(0%, 0%)', opacity: '1'}
+    ],
+        {
+            duration: 1000, easing: 'ease-in-out'
+        });
+}
+
+const createCard = (card, nr) => {
+
+    const cardId = players["player" + nr].deck[0].id;
+    const suit = players["player" + nr].deck[0].suit;
+    const cardObject = document.getElementById(cardId);
+    
+    const symbol = document.getElementById(cardId).getElementsByClassName("symbol");
+
+    Array.from(symbol).forEach(symbol => setSymbol(symbol, suit));
+
+    changeColor(card, suit);
+
+    card.innerHTML = "";
+    card.appendChild(cardObject.cloneNode(true));
+}
 
 
 const checkWinner = () => {}
@@ -116,7 +150,7 @@ const checkPlay = () => {
 
     if (valuePlayer1 === valuePlayer2) {
         war();
-        return;
+        //return;
     }
     if (valuePlayer1 > valuePlayer2) {
         score1.innerHTML++;
@@ -127,8 +161,6 @@ const checkPlay = () => {
     }
     incrementDeck(winner);
     deleteCardFromDeck();
-
-    //console.log(players.player1.deck, players.player2.deck);
 }
 
 const incrementDeck = (winner) => {
@@ -136,9 +168,6 @@ const incrementDeck = (winner) => {
 }
 
 const deleteCardFromDeck = () => {
-    /*players.player1.deck.shift(0); 
-    players.player2.deck.shift(0);*/
-
     Object.values(players).forEach(element => element.deck.shift(0));
 
     let cardScore1 = document.getElementById("cardbox1");
@@ -159,36 +188,11 @@ const cardObject = (id, suit, value) => {
     }
 }
 
-const createCard = (card, nr) => {
-
-    //ID DA CARTA DO ARRAY
-    const cardId = players["player" + nr].deck[0].id;
-    const suit = players["player" + nr].deck[0].suit;
-    const cardObject = document.getElementById(cardId);
-
-    console.log(nr, cardId, cardObject)
-    
-
-    //console.log(cardId);
-    //const symbol = document.getElementById(cardId).getElementsByClassName("symbol");
-
-    //Array.from(symbol).forEach(symbol => setSymbol(symbol, suit));
-
-    //changeColor(card, suit);
-    //card.appendChild(cardObject);
-    card.innerHTML = "";
-    card.appendChild(cardObject);
-    //card.innerHTML = cardObject;
-}
-
 const setSymbol = (symbol, suit) => {
     symbol.innerHTML = suit;
 }
 
 const changeColor = (card, suit) => {
-
-    //console.log(card);
-    //console.log(suit);
 
     switch (suit) {
         case "&hearts;":
