@@ -19,7 +19,7 @@ body{
     padding:0;
 }
 
-.card-deck {
+.container {
     display: flex;
     flex-wrap: wrap;
 }
@@ -59,6 +59,7 @@ body{
 .playground {
     display: flex;
     justify-content: center;
+    z-index: 2;
 }
 
 .playerCards {
@@ -84,6 +85,7 @@ body{
     padding: 10px;
     background-color: white;
     color: red;
+    font-size: 36px;
 
     -webkit-box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
@@ -91,6 +93,8 @@ body{
 }
 
 .card-war {
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
     -webkit-box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
@@ -101,30 +105,36 @@ body{
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     z-index: 2;
-}
+}*/
 
-.playerCards .card-war:nth-child(1) {
+/*.playerCards .card-war:nth-child(1) {
     top: 5px;
     right: 10px;
-}
+}*/
 
-.playerCards .card-war:nth-child(2) {
+.playerCards .card-war:nth-child(1) {
     top: 10px;
     right: 15px;
 }
 
-.playerCards .card-war:nth-child(3) {
+.playerCards .card-war:nth-child(2) {
     top: 15px;
     right: 20px;
 }
 
-.playerCards .card-war:nth-child(1) {
+.playerCards .card-war:nth-child(3) {
+    top: 20px;
+    right: 25px;
+}
+
+.playerCards .card-war:nth-child(4) {
     transform: rotate(5deg);
     z-index: 5;
-}*/
+    right: 30px;
+}
 
 .card-back {
-    visibility: hidden;
+    /*visibility: hidden;*/
     z-index: 2;
     width: 130px;
     height: 180px;
@@ -195,7 +205,6 @@ body{
     grid-template-rows: 1fr; 
     gap: 2px 2px;
     height: 100%;
-    font-size: 36px;
 }
 
 .queen, .jack, .king {
@@ -237,17 +246,16 @@ body{
     font-size: 10px;
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
-.card-animation-flyin {
+.card-animation-flyin, .card-animation-flyinLeft {
     animation-timing-function: ease-in-out;
     animation: flyin 0.4s;
 
     /*animation-iteration-count: 8;*/
+}
+
+.card-animation-flyinLeft {
+    animation-timing-function: ease-in-out;
+    animation: flyinLeft 0.6s;
 }
 
 .card-animation-flyup {
@@ -258,44 +266,6 @@ body{
 .card-animation-flydown {
     animation-timing-function: ease-in-out;
     animation: flydown 0.4s;
-}
-
-@keyframes flyin {
-    0%   { 
-        transform: translateX(300%);
-        opacity: 0;		
-        }
-    100% { 
-        transform: translateX(0%);
-        opacity: 1;
-        }
-}
-
-@keyframes flydown {
-    0%   { 
-        transform: translate(-20%, 100%);
-        opacity: 0;		
-        }
-    100% { 
-        transform: translate(0%, 0%);
-        opacity: 1;
-        }
-}
-
-@keyframes flyup {
-    0%   { 
-        transform: translate(20%, -100%);
-        opacity: 0;		
-        }
-    100% { 
-        transform: translate(0%, 0%);
-        opacity: 1;
-        }
-}
-
-@keyframes change-color {
-    from { background-color: rgb(255, 51, 0); }
-	to { background-color: rgb(255, 132, 0); }
 }
 
 #overlay {
@@ -350,4 +320,70 @@ body{
 	-ms-animation: change-color 1s infinite alternate;
 	-o-animation: change-color 1s infinite alternate;
 	animation: change-color 1s infinite alternate;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        font-size: 22px;
+    }
+
+    .card, .card-back, .card-inner {
+        width: 115px;
+        height: 165px;
+        font-size: 32px;
+    }
+    .svg-card {
+        width: 67px;
+        height: 100px;
+        font-size: 8px;
+    }
+}
+
+@keyframes flyin {
+    0%   { 
+        transform: translateX(300%);
+        opacity: 0;		
+        }
+    100% { 
+        transform: translateX(0%);
+        opacity: 1;
+        }
+}
+
+@keyframes flyinLeft {
+    0%   { 
+        transform: translateX(-300%);
+        opacity: 0;		
+        }
+    100% { 
+        transform: translateX(0%);
+        opacity: 1;
+        }
+}
+
+@keyframes flydown {
+    0%   { 
+        transform: translate(-20%, 100%);
+        opacity: 0;		
+        }
+    100% { 
+        transform: translate(0%, 0%);
+        opacity: 1;
+        }
+}
+
+@keyframes flyup {
+    0%   { 
+        transform: translate(20%, -100%);
+        opacity: 0;		
+        }
+    100% { 
+        transform: translate(0%, 0%);
+        opacity: 1;
+        }
+}
+
+@keyframes change-color {
+    from { background-color: rgb(255, 51, 0); }
+	to { background-color: rgb(255, 132, 0); }
 }
