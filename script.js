@@ -1,5 +1,3 @@
-includeHTML();
-
 const id = ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace"];
 const suit = ["&diams;", "&hearts;", "&clubs;", "&spades;"];
 const deck = [];
@@ -157,16 +155,10 @@ const removeCards = (card) => {
 const incrementDeck = (winner) => {
     players["player" + winner].deck.push(players.player1.deck[0], players.player2.deck[0]);
     players["player" + winner].deck.concat(warArray);
-
-    console.log(players.player1.deck);
-    console.log(players.player2.deck);
-    console.log(warArray);
 }
 
 const deleteCardFromDeck = () => {
     Object.values(players).forEach(element => element.deck.shift(0));
-    //console.log(players.player1.deck.length);
-    //console.log(players.player2.deck.length);
 }
 
 const setScore = () => {
@@ -187,9 +179,6 @@ const war = () => {
             //arrayTemp.push(element.deck.slice(0, 3));
             element.deck.splice(0, 3);
         });
-        /*console.log(warArray);
-        console.log(players.player1.deck.length);
-        console.log(players.player2.deck.length);*/
     }
 
     for (let i = 0; i < warCards.length; i++) {
@@ -201,7 +190,6 @@ const war = () => {
     createCard(cardWar1, 1);
     createCard(cardWar2, 2);
 }
-
 
 const checkWinner = () => {
     if (players.player1.deck.length === 0 || players.player2.deck.length < 3) {
@@ -265,8 +253,6 @@ const scale = (cardToPlay) => {
         };
 }
 
-////////////////
-
 const cardObject = (id, suit, value) => {
     return {
         id: id,
@@ -306,26 +292,22 @@ const endGame = () => {
 }
 
 //MOUSEOVER AND OUT OF PLAYERS
-
 cardBack[0].addEventListener("mouseover", (event) => {
     event.target.classList.add('card-back-hover');
 });
-
 cardBack[0].addEventListener("mouseout", (event) => {
     event.target.classList.remove('card-back-hover');
 });
-
 cardBack[cardBackLength].addEventListener("mouseover", (event) => {
     event.target.classList.add('card-back-hover');
 });
-
 cardBack[cardBackLength].addEventListener("mouseout", (event) => {
     event.target.classList.remove('card-back-hover');
 });
 
 
-
 //CALL EXERNAL HTML
+includeHTML();
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
   /* Loop through a collection of all HTML elements: */
