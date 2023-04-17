@@ -1,10 +1,7 @@
 const id = ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace"];
 const suit = ["&diams;", "&hearts;", "&clubs;", "&spades;"];
 const deck = [];
-let players = {
-    player1: {},
-    player2: {},
-};
+let players = { player1: {}, player2: {},};
 const playerRound = document.getElementsByClassName("player");
 const playerCards = document.getElementsByClassName("playerCards");
 const overlay = document.getElementById("overlay");
@@ -37,6 +34,14 @@ const startGame = () => {
     createDeck();
     createPlayersDeck();
     createPlayer();
+}
+
+const cardObject = (id, suit, value) => {
+    return {
+        id: id,
+        suit: suit,
+        value: value
+    }
 }
 
 const createDeck = () => {
@@ -154,7 +159,8 @@ const removeCards = (card) => {
 
 const incrementDeck = (winner) => {
     players["player" + winner].deck.push(players.player1.deck[0], players.player2.deck[0]);
-    players["player" + winner].deck.concat(warArray);
+    players["player" + winner].deck = players["player" + winner].deck.concat(warArray);
+    warArray = [];
 }
 
 const deleteCardFromDeck = () => {
@@ -251,14 +257,6 @@ const scale = (cardToPlay) => {
         }).onfinish = () => {
             Array.from(playerCards).forEach(element => fadeOut(element));
         };
-}
-
-const cardObject = (id, suit, value) => {
-    return {
-        id: id,
-        suit: suit,
-        value: value
-    }
 }
 
 const setSymbol = (symbol, suit) => {
